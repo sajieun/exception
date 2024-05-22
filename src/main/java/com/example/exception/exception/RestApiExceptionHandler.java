@@ -4,6 +4,7 @@ import com.example.exception.controller.RestApiBController;
 import com.example.exception.controller.RestApiController;
 import com.example.exception.model.Api;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,7 +14,8 @@ import java.util.NoSuchElementException;
 
 @Slf4j
 // 두개 혹은 한개 설정 가능
-@RestControllerAdvice(basePackageClasses = {RestApiController.class, RestApiBController.class})
+@RestControllerAdvice
+@Order(1)
 public class RestApiExceptionHandler {
 
     @ExceptionHandler(value = {Exception.class})
