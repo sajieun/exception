@@ -2,6 +2,7 @@ package com.example.exception.controller;
 
 import com.example.exception.model.Api;
 import com.example.exception.model.UserResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,18 +40,19 @@ public class UserApiController {
                 .get();
 
         Api<UserResponse> response = Api.<UserResponse>builder()
+                .resultCode(String.valueOf(HttpStatus.OK.value()))
+                .resultMessage(HttpStatus.OK.name())
                 .data(user)
                 .build();
         return response;
     }
 //    결과값
-
-    //"result_code": null,
-    //        "result_message": null,
-    //        "data":{
-    //        "id": "1",
-    //                "name": "홍길동",
-    //                "age": 10
-    //    }
-}
+//"result_code": "200",
+//        "result_message": "OK",
+//        "data":{
+//        "id": "1",
+//                "name": "홍길동",
+//                "age": 10
+//    }
+//}
 }
